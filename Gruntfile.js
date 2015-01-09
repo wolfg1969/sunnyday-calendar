@@ -325,10 +325,25 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+    
+    'string-replace': {
+       inline: {
+         files: {
+           '.tmp/concat/scripts/': '.tmp/concat/scripts/*.js',
+         },
+         options: {
+           replacements: [{
+             pattern: 'sample-data.json',
+             replacement: 'http://sunnyday.guoyong.me/api/'
+           }]
+         }
+      }
     }
   });
 
-
+  grunt.loadNpmTasks('grunt-string-replace');
+  
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
@@ -346,7 +361,7 @@ module.exports = function (grunt) {
       'watch'
     ]);
   });
-
+  
   grunt.registerTask('server', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
@@ -374,6 +389,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
+    'string-replace',
     'cssmin',
     'uglify',
     'copy:dist',
