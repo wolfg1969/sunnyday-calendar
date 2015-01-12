@@ -23,7 +23,7 @@
         format = d3.time.format('%Y-%m-%d');
 
     var svg = d3.select('#calendar').selectAll('svg')
-        .data(d3.range(2013, 2016).sort(function(a, b) { return b-a; }))
+        .data(d3.range(2014, (new Date()).getFullYear()+1).sort(function(a, b) { return b-a; }))
         .enter().append('svg')
         .attr('width', width)
         .attr('height', height)
@@ -79,8 +79,8 @@
                       .duration(200)    
                       .style('opacity', 1);    
                   div.html('<img src="' + data[d].url + '">')     
-                      .style('left', (d3.event.pageX - 160) + 'px')             
-                      .style('top', (d3.event.pageY + 10) + 'px');
+                      .style('left', (d3.event.pageX) + 'px')             
+                      .style('top', (d3.event.pageY + 20) + 'px');
                   div.transition()
                       .delay(2000)    
                       .style('opacity', 0);

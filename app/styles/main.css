@@ -92,7 +92,7 @@ body {
 
 .day {
   fill: #fff;
-  stroke: none;
+  stroke: #eee;
 }
 
 .month {
