@@ -23,7 +23,7 @@
         format = d3.time.format('%Y-%m-%d');
 
     var svg = d3.select('#calendar').selectAll('svg')
-        .data(d3.range(2014, (new Date()).getFullYear()+1).sort(function(a, b) { return b-a; }))
+        .data(d3.range(2013, (new Date()).getFullYear()+1).sort(function(a, b) { return b-a; }))
         .enter().append('svg')
         .attr('width', width)
         .attr('height', height)
